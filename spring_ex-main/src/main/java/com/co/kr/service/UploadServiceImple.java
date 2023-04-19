@@ -52,6 +52,8 @@ public class UploadServiceImple implements UploadService {
 		//session 생성
 		HttpSession session = httpReq.getSession();
 		
+		//System.out.println(fileListVO.getSeq());
+		
 		//content domain 생성 
 		BoardContentDomain boardContentDomain = BoardContentDomain.builder()
 				.mbId(session.getAttribute("id").toString())

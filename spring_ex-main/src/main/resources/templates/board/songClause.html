@@ -7,7 +7,7 @@
 </div>
 
 <div class="title" style="color:#00a2be">노래 리스트</div>
-<form role="form" action="upload" method="post" enctype="multipart/form-data">
+<form role="form" action="SongUpload" method="post" enctype="multipart/form-data">
     <div class="section form">
        <table>
         <colgroup>
@@ -18,21 +18,21 @@
             <tr> 
                 <th>제목</th>
                 <td>
-                    <input type="hidden" name="seq" placeholder="글번호" required/>
-                    <input type="text" name="title" placeholder="제목" required/>
+                    <input type="hidden" name=Songseq placeholder="글번호" required/>
+                    <input type="text" name="Songtitle" placeholder="제목" required/>
                 </td>
             </tr>
             
             <tr> 
                <th>가수</th>
                 <td >
-                	<input type="text" name="가수" placeholder="가수" required/>
+                	<input type="text" name="SongSinger" placeholder="가수" required/>
                 </td>
             </tr>
             <tr> 
                <th>노래 URL</th>
                 <td >
-                	<input type="text" name="url" placeholder="URL" required/>
+                	<input type="text" name="SongURL" placeholder="URL" required/>
                 </td>
             </tr>
             <tr> 

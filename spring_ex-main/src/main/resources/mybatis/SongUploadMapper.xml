@@ -9,4 +9,86 @@
 	  FROM jsp.songboard order by song_update_at desc
 	</select>
 
+	<!-- URL insert -->
+	<insert id="URLUpload" parameterType="com.co.kr.domain.SongURLDomain"
+	useGeneratedKeys="true"
+        keyProperty="SongSeq" keyColumn="song_seq">
+	
+        INSERT INTO jsp.songboard (
+            mb_id,   
+						song_title,
+						song_singer,                         
+						song_url  
+        )
+        VALUES (
+            #{mbId},
+            #{SongTitle},
+            #{SongSinger},
+            #{SongURL}
+        )
+	</insert>
+	
+	<!-- file insert -->
+	<insert id="SongfileUpload" parameterType="com.co.kr.domain.SongFileDomain">
+        INSERT INTO jsp.songfiles (
+            song_seq,
+            mb_id,   
+            up_original_file_name,                         
+            up_new_file_name,                      
+            up_file_path,                                   
+            up_file_size
+        )
+        VALUES (
+            #{SongSeq},
+            #{mbId},
+            #{upOrginalFileName},
+            #{upNewFileName},
+            #{upFilePath},
+            #{upFileSize}
+        )
+    </insert>
+
+		<!-- Content update -->
+    <update id="bdContentUpdate" parameterType="com.co.kr.domain.SongURLDomain">
+        UPDATE jsp.songboard SET
+                song_seq=#{SongSeq},
+                mb_id=#{mbId},
+                song_title=#{SongTitle},
+                song_url=#{SongURL}, 
+                song_update_at=now()  
+        WHERE song_seq=#{SongSeq}
+    </update>
+
+    <!-- file update -->
+    <update id="SongFileUpdate" parameterType="com.co.kr.domain.SongFileDomain">
+        UPDATE jsp.songfiles SET
+                song_seq=#{SongSeq},
+                mb_id=#{mbId},
+                up_original_file_name=#{upOrginalFileName},
+                up_new_file_name=#{upNewFileName}, 
+                up_file_path=#{upFilePath},
+                up_file_size=#{upFileSize}
+        WHERE song_seq=#{SongSeq}
+    </update>
+
+	<!-- Content delete -->
+    <delete id="SongURLRemove" parameterType="hashMap">
+       DELETE FROM jsp.songboard WHERE song_seq=#{SongSeq}
+    </delete>
+	<!-- file delete -->
+    <delete id="SongFileRemove" parameterType="com.co.kr.domain.SongFileDomain">
+	    DELETE FROM jsp.songfiles WHERE up_new_file_name = #{upNewFileName}
+	</delete>
+	
+	<!-- content -->
+	<select id="SongSelectOne" resultType="com.co.kr.domain.SongListDomain" parameterType="map">
+    	SELECT song_seq, mb_id, song_title, song_singer, song_url , song_create_at, song_update_at
+    	FROM jsp.songboard where song_seq = #{SongSeq}
+	</select>
+
+	<!-- file -->
+	<select id="SongSelectOneFile" resultType="com.co.kr.domain.SongFileDomain" parameterType="map">
+	    SELECT song_seq, mb_id, up_original_file_name, up_new_file_name, up_file_path, up_file_size
+	    FROM jsp.view_songboard where song_seq = #{SongSeq}
+	</select>
 </mapper>
