@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.co.kr.mapper.SongUploadMapper">
+
+	<!--select all-->
+	<select id="SongList" resultType="com.co.kr.domain.SongListDomain">
+	  SELECT song_seq, mb_id, song_title,song_singer, song_url, song_create_at, song_update_at
+	  FROM jsp.songboard order by song_update_at desc
+	</select>
+
+</mapper>

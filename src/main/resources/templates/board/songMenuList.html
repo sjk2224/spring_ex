@@ -1,0 +1,42 @@
+<div class="section list">
+    <table>
+        <th:block th:if="${items}">
+            <colgroup>
+                <col style="width: 5%"/>
+                <col style="width: 30%"/>
+                <col style="width: 20%"/>
+                <col style="width: 10%"/>
+                <col style="width: 15%"/>
+                <col style="width: 15%"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>가수</th>
+                    <th>URL</th>
+                    <th>등록일</th>
+                    <th>수정일</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+              
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.SongSeq}"></td>
+                    <td><a a th:text="${item.SongTitle}"></a></td>
+                    <td th:text="${item.SongSinger}"></td>
+                    <td th:text="${item.SongTitle}" th:href="${item.SongURL}"></td>
+                    <td th:text="${item.SongCreateAt}"></td>
+                    <td th:text="${item.SongUpdateAt}"></td>
+                </tr>
+            </th:block>    
+               
+        </tbody>
+    </table>
+
+	            <a  th:href="@{songList}"><button style="background-color: #00a2be; color: white; margin-left: 20px">목록으로</button></a>
+        </div>
+        
+    </th:block>
+</div>

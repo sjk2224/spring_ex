@@ -1,0 +1,51 @@
+<div  class="userInfo" th:if=${session.id}>
+    <span th:text="${session.id}"></span><span> 님 / </span>
+    <span th:text="${session.mbLevel}"></span><span> 레벨</span>
+    <button type="button">
+        <a th:href="@{logout}" style="color: #fff">로그아웃</a>
+    </button>
+</div>
+
+<div class="title" style="color:#00a2be">노래 리스트</div>
+<form role="form" action="upload" method="post" enctype="multipart/form-data">
+    <div class="section form">
+       <table>
+        <colgroup>
+            <col style="width:10%"/>
+            <col style="width:90%"/>
+        </colgroup>
+        <tbody>
+            <tr> 
+                <th>제목</th>
+                <td>
+                    <input type="hidden" name="seq" placeholder="글번호" required/>
+                    <input type="text" name="title" placeholder="제목" required/>
+                </td>
+            </tr>
+            
+            <tr> 
+               <th>가수</th>
+                <td >
+                	<input type="text" name="가수" placeholder="가수" required/>
+                </td>
+            </tr>
+            <tr> 
+               <th>노래 URL</th>
+                <td >
+                	<input type="text" name="url" placeholder="URL" required/>
+                </td>
+            </tr>
+            <tr> 
+               <th><label for="file">이미지 파일</label></th>
+                <td>
+                    <input type="file" id="file" name="files" multiple />
+                </td>
+            </tr>
+        </tbody>
+       </table>
+       <div class="button">
+            <button type="submit" style="margin-right: 11px">글쓰기</button>
+       </div>
+    </div>
+
+</form>
