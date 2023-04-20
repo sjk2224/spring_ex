@@ -74,6 +74,7 @@ public class SongUploadServiceImpl implements SongUploadService{
 		
 		List<MultipartFile> multipartFiles = request.getFiles("files");
 		
+		
 		if(songfileListVO.getSongisEdit() != null) {
 			List<SongFileDomain> fileList = null;
 			
@@ -101,6 +102,7 @@ public class SongUploadServiceImpl implements SongUploadService{
 		}
 		
 		Path rootPath = Paths.get(new File("C://").toString(),"upload",File.separator).toAbsolutePath().normalize();
+		
 		File pathCheck = new File(rootPath.toString());
 		
 		if(!pathCheck.exists()) pathCheck.mkdirs();
@@ -147,7 +149,7 @@ public class SongUploadServiceImpl implements SongUploadService{
 							.upFileSize((int)multipartFile.getSize())
 							.build();
 					
-					songUploadMapper.SongFileUpdate(songFileDomain);
+					songUploadMapper.SongFileUpload(songFileDomain);
 					System.out.println("upload done");
 				}catch(IOException e) {
 					throw RequestException.fire(Code.E404,"잘못된 업로드 파일", HttpStatus.NOT_FOUND);

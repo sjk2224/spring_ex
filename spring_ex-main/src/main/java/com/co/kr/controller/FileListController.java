@@ -61,12 +61,13 @@ public class FileListController {
 		map.put("bdSeq", Integer.parseInt(bdSeq));
 		BoardListDomain boardListDomain = uploadService.boardSelectOne(map);
 		List<BoardFileDomain> fileList = uploadService.boardSelectOneFile(map);
+		System.out.println("files : "+fileList);
 		
 		for(BoardFileDomain list : fileList) {
 			String path = list.getUpFilePath().replaceAll("\\\\", "/");
 			list.setUpFilePath(path);
 		}
-		System.out.println("files"+fileList);
+		System.out.println("files : "+fileList);
 		
 		
 		mav.addObject("detail",boardListDomain);

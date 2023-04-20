@@ -8,9 +8,9 @@ import lombok.Data;
 public class SongFileDomain {
 	private Integer SongSeq;
 	private String mbId;
+	
 	private String upOrginalFileName;
 	private String upNewFileName;
-	
 	private String upFilePath;
 	private Integer upFileSize;
 }

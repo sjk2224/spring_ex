@@ -53,11 +53,13 @@ public class SongListController {
 		SongListDomain songListDomain = songUploadService.SongSelectOne(map);
 		System.out.println("SongListDomain " + songListDomain);
 		List<SongFileDomain> fileList = songUploadService.SongSelectOneFile(map);
+		System.out.println("fileLIst : "+fileList);
 		
 		for(SongFileDomain list: fileList) {
 			String path = list.getUpFilePath().replaceAll("\\\\", "/");
 			list.setUpFilePath(path);
 		}
+		System.out.println("fileLIst : "+fileList);
 		
 		mav.addObject("detail",songListDomain);
 		mav.addObject("files", fileList);

@@ -29,7 +29,7 @@
 	</insert>
 	
 	<!-- file insert -->
-	<insert id="SongfileUpload" parameterType="com.co.kr.domain.SongFileDomain">
+	<insert id="SongFileUpload" parameterType="com.co.kr.domain.SongFileDomain">
         INSERT INTO jsp.songfiles (
             song_seq,
             mb_id,   
@@ -49,7 +49,7 @@
     </insert>
 
 		<!-- Content update -->
-    <update id="bdContentUpdate" parameterType="com.co.kr.domain.SongURLDomain">
+    <update id="SongURLUpdate" parameterType="com.co.kr.domain.SongURLDomain">
         UPDATE jsp.songboard SET
                 song_seq=#{SongSeq},
                 mb_id=#{mbId},

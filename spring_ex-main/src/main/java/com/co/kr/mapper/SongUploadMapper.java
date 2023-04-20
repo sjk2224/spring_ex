@@ -31,7 +31,9 @@ public interface SongUploadMapper {
 	//file Delete
 	public void SongFileRemove(SongFileDomain songFileDomain);
 	
+	//select one
 	public SongListDomain SongSelectOne(HashMap<String, Object> map);
 	
+	//select one File
 	public List<SongFileDomain> SongSelectOneFile(HashMap<String, Object>map);
 }
