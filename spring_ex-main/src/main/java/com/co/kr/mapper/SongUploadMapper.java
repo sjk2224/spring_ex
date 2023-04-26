@@ -13,6 +13,8 @@ import com.co.kr.domain.SongURLDomain;
 public interface SongUploadMapper {
 	public List<SongListDomain> SongList();
 	
+	public List<SongFileDomain> SongFileList();
+	
 	//URL Insert
 	public void URLUpload(SongURLDomain songURLDomain);
 	

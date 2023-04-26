@@ -26,5 +26,7 @@ public interface SongUploadService {
 	public SongListDomain SongSelectOne(HashMap<String, Object> map);
 	
 	public List<SongFileDomain> SongSelectOneFile(HashMap<String, Object>map);
+	
+	public List<SongFileDomain> SongFileList();
 
 }

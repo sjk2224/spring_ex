@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.co.kr.domain.BoardListDomain;
 import com.co.kr.domain.LoginDomain;
+import com.co.kr.domain.SongFileDomain;
 import com.co.kr.domain.SongListDomain;
 import com.co.kr.service.SongUploadService;
 import com.co.kr.service.UploadService;
@@ -291,9 +292,14 @@ public class UserController {
 	public ModelAndView songList() { 
 		ModelAndView mav = new ModelAndView();
 		List<SongListDomain> items = songUploadService.SongList();
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		
+		List<SongFileDomain> fileList = songUploadService.SongFileList();
+		System.out.println("fileList ==> "+ fileList);
 		System.out.println("items ==> "+ items);
 		System.out.println("items ==> "+ getLocalMacAddress());
 		mav.addObject("items", items);
+		mav.addObject("fileList", fileList);
 		mav.addObject("mac", getLocalMacAddress());
 		System.out.println(mav);
 		mav.setViewName("board/songList.html");

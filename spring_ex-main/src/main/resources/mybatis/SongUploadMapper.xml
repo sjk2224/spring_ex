@@ -8,6 +8,12 @@
 	  SELECT song_seq, mb_id, song_title,song_singer, song_url, song_create_at, song_update_at
 	  FROM jsp.songboard order by song_update_at desc
 	</select>
+	
+	<!--file all-->
+	<select id="SongFileList" resultType="com.co.kr.domain.SongFileDomain">
+	  SELECT song_seq,mb_id,up_original_file_name,up_new_file_name,up_file_path,up_file_size
+	  FROM jsp.songfiles order by song_seq desc
+	</select>
 
 	<!-- URL insert -->
 	<insert id="URLUpload" parameterType="com.co.kr.domain.SongURLDomain"

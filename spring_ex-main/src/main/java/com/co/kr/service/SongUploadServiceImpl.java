@@ -185,5 +185,11 @@ public class SongUploadServiceImpl implements SongUploadService{
 		// TODO Auto-generated method stub
 		return songUploadMapper.SongSelectOneFile(map);
 	}
+
+	@Override
+	public List<SongFileDomain> SongFileList() {
+		// TODO Auto-generated method stub
+		return songUploadMapper.SongFileList();
+	}
 	
 }
