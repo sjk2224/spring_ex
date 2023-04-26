@@ -12,4 +12,5 @@ public class SongURLDomain {
 	private String SongTitle;
 	private String SongSinger;
 	private String SongURL;
+	
 }

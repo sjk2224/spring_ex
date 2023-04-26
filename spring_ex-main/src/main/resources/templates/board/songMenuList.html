@@ -5,7 +5,8 @@
                 <col style="width: 5%"/>
                 <col style="width: 20%"/>
                 <col style="width: 20%"/>
-                <col style="width: 20%"/>
+                <col style="width: 10%"/>
+                <col style="width: 10% height:10%"/>
                 <col style="width: 15%"/>
                 <col style="width: 15%"/>
             </colgroup>
@@ -15,6 +16,7 @@
                     <th>제목</th>
                     <th>가수</th>
                     <th>URL</th>
+                    <th>표지</th>
                     <th>등록일</th>
                     <th>수정일</th>
                 </tr>
@@ -26,7 +28,10 @@
                     <td th:text="${item.SongSeq}"></td>
                     <td><a a th:text="${item.SongTitle}" th:href="@{/SongDetail(SongSeq = ${item.SongSeq})}"></a></td>
                     <td th:text="${item.SongSinger}"></td>
-                    <td><a a  th:href="${item.SongURL}">유튜브 링크</a></td>
+                    <td><a a th:href="${item.SongURL}">유튜브 링크</a></td>
+                    <td th:if="${fileList}"  th:each="file : ${fileList}" style="display: inline-block;margin-bottom: 5px;">
+		                <img th:if="${file.SongSeq} == ${item.SongSeq}" th:src="@{${file.upNewFileName}}" alt="첨부이미지" reloadable="true" height="70"/>
+		            </td>
                     <td th:text="${item.SongCreateAt}"></td>
                     <td th:text="${item.SongUpdateAt}"></td>
                 </tr>
