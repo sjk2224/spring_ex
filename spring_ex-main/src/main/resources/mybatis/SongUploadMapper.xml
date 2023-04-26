@@ -48,12 +48,13 @@
         )
     </insert>
 
-		<!-- Content update -->
+		<!-- URL update -->
     <update id="SongURLUpdate" parameterType="com.co.kr.domain.SongURLDomain">
         UPDATE jsp.songboard SET
                 song_seq=#{SongSeq},
                 mb_id=#{mbId},
                 song_title=#{SongTitle},
+                song_singer=#{SongSinger},
                 song_url=#{SongURL}, 
                 song_update_at=now()  
         WHERE song_seq=#{SongSeq}
@@ -71,7 +72,7 @@
         WHERE song_seq=#{SongSeq}
     </update>
 
-	<!-- Content delete -->
+	<!-- URL delete -->
     <delete id="SongURLRemove" parameterType="hashMap">
        DELETE FROM jsp.songboard WHERE song_seq=#{SongSeq}
     </delete>
@@ -80,7 +81,7 @@
 	    DELETE FROM jsp.songfiles WHERE up_new_file_name = #{upNewFileName}
 	</delete>
 	
-	<!-- content -->
+	<!-- URL -->
 	<select id="SongSelectOne" resultType="com.co.kr.domain.SongListDomain" parameterType="map">
     	SELECT song_seq, mb_id, song_title, song_singer, song_url , song_create_at, song_update_at
     	FROM jsp.songboard where song_seq = #{SongSeq}

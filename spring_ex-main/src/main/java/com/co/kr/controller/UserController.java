@@ -1,6 +1,10 @@
 package com.co.kr.controller;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -288,9 +292,44 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		List<SongListDomain> items = songUploadService.SongList();
 		System.out.println("items ==> "+ items);
+		System.out.println("items ==> "+ getLocalMacAddress());
 		mav.addObject("items", items);
+		mav.addObject("mac", getLocalMacAddress());
+		System.out.println(mav);
 		mav.setViewName("board/songList.html");
 		return mav; 
 	}
+	
+	//mac 주소
+	public static String getLocalMacAddress() {
+        String result = "";
+        InetAddress ip;
+        
+        try {
+            ip = InetAddress.getLocalHost();
+            
+            NetworkInterface network = NetworkInterface.getByInetAddress(ip);
+            byte[] mac = network.getHardwareAddress();
+            
+            String ipValue = ip.getHostAddress();
+            System.out.println("아이피 확인 : " + ipValue);
+
+            String ipValue2 = ip.getHostName();
+            System.out.println("아이피 확인 : " + ipValue2);
+            
+            
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < mac.length; i++) {
+                sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));
+            }
+                result = sb.toString();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (SocketException e){
+            e.printStackTrace();
+        }
+            
+        return result;
+     }
 	
 }

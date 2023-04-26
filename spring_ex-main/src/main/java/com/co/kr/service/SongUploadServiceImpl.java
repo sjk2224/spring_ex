@@ -62,6 +62,7 @@ public class SongUploadServiceImpl implements SongUploadService{
 		if(songfileListVO.getSongisEdit() != null) {
 			songURLDomain.setSongSeq(Integer.parseInt(songfileListVO.getSongseq()));
 			System.out.println("수정 업데이트");
+			songUploadMapper.SongURLUpdate(songURLDomain);
 		}else {
 			songUploadMapper.URLUpload(songURLDomain);
 			System.out.println("db 인서트");
@@ -73,7 +74,6 @@ public class SongUploadServiceImpl implements SongUploadService{
 		String mbId = songURLDomain.getMbId();
 		
 		List<MultipartFile> multipartFiles = request.getFiles("files");
-		
 		
 		if(songfileListVO.getSongisEdit() != null) {
 			List<SongFileDomain> fileList = null;
@@ -148,7 +148,7 @@ public class SongUploadServiceImpl implements SongUploadService{
 							.upFilePath(targetPath.toString())
 							.upFileSize((int)multipartFile.getSize())
 							.build();
-					
+					System.out.println(songFileDomain);
 					songUploadMapper.SongFileUpload(songFileDomain);
 					System.out.println("upload done");
 				}catch(IOException e) {
@@ -157,8 +157,8 @@ public class SongUploadServiceImpl implements SongUploadService{
 			}
 			
 		}
-		
-		
+		System.out.println("최종: "+songURLDomain);
+		System.out.println(SongSeq);
 		return SongSeq;
 	}
 

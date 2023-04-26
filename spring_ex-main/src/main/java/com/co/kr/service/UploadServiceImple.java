@@ -63,7 +63,7 @@ public class UploadServiceImple implements UploadService {
 		
 				if(fileListVO.getIsEdit() != null) {
 					boardContentDomain.setBdSeq(Integer.parseInt(fileListVO.getSeq()));
-					System.out.println("수정업데이트");
+					System.out.println("수정업데이트"+boardContentDomain);
 					// db 업데이트
 					uploadMapper.bdContentUpdate(boardContentDomain);
 				}else {	
