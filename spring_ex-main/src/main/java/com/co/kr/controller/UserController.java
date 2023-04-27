@@ -300,15 +300,7 @@ public class UserController {
 		System.out.println("items ==> "+ getLocalMacAddress());
 		
 		System.out.println("fileList ==> "+ fileList.size());
-				
-		for( int i = 0; i < fileList.size(); i++) {
-			for (int j = 0; j < items.size(); j++) {
-				
-			}
-		}
-		
-		//for ( int item : items.get("Seq")) {}
-		
+
 		mav.addObject("items", items);
 		mav.addObject("fileList", fileList);
 		mav.addObject("mac", getLocalMacAddress());
