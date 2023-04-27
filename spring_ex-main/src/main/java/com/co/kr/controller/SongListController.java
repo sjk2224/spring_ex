@@ -175,7 +175,7 @@ public class SongListController {
 		}
 		session.removeAttribute("files");
 		mav = songListCall();
-		mav.setViewName("board/songList.html");
+		mav.setViewName("redirect:/songList");
 		return mav;
 	}
 	
