@@ -292,7 +292,6 @@ public class UserController {
 	public ModelAndView songList() { 
 		ModelAndView mav = new ModelAndView();
 		List<SongListDomain> items = songUploadService.SongList();
-		HashMap<String, Object> map = new HashMap<String,Object>();
 		
 		List<SongFileDomain> fileList = songUploadService.SongFileList();
 		System.out.println("fileList ==> "+ fileList);
