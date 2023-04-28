@@ -175,7 +175,7 @@ public class SongListController {
 		}
 		session.removeAttribute("files");
 		mav = songListCall();
-		mav.setViewName("redirect:/songList");
+		mav.setViewName("board/songList.html");
 		return mav;
 	}
 	
@@ -183,6 +183,8 @@ public class SongListController {
 	public ModelAndView songListCall() {
 		ModelAndView mav = new ModelAndView();
 		List<SongListDomain> items = songUploadService.SongList();
+		List<SongFileDomain> fileList = songUploadService.SongFileList();
+		mav.addObject("fileList", fileList);
 		mav.addObject("items",items);
 		return mav;
 	}
